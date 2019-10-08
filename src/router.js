@@ -1,24 +1,40 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-
+import Home from "./views/tabbar/Home.vue";
+import Member from "./views/tabbar/Member.vue";
+import Shopcar from "./views/tabbar/Shopcar.vue";
+import Search from "./views/tabbar/Search.vue";
+import newsList from "./views/news/newslist.vue";
+import newsInfo from "./views/news/newsinfo.vue";
 Vue.use(Router);
 
 export default new Router({
   routes: [
+    { path: "/", redirect: "/home" },
     {
-      path: "/",
+      path: "/home",
       name: "home",
       component: Home
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/member",
+      component: Member
+    },
+    {
+      path: "/shopcar",
+      component: Shopcar
+    },
+    {
+      path: "/search",
+      component: Search
+    },
+    {
+      path: "/home/newslist",
+      component: newsList
+    },
+    {
+      path: "/home/newsinfo/:id",
+      component: newsInfo
     }
   ]
 });
