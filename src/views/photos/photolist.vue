@@ -17,7 +17,7 @@
       </div>
     </div>
     <ul class="photo-list">
-      <router-link v-for="item in list" :key="item.id" :to="'/home/photolist/'+item.id" tag="li">
+      <router-link v-for="item in list" :key="item.id" :to="'/home/photoinfo/'+item.id" tag="li">
         <img v-lazy="item.img_url" />
         <div class="info">
           <h3 class="info-title">{{item.title}}</h3>
@@ -30,7 +30,6 @@
 <script>
 //导入mui的js文件
 import mui from "../../lib/mui/js/mui.min.js";
-import { Toast } from "mint-ui";
 export default {
   data() {
     return {
@@ -64,9 +63,9 @@ export default {
       this.$http.get("api/getimages/" + id).then(result => {
         if (result.body.status === 0) {
           this.num = index;
-          this.list = result.body.message;
+          this.list = result.body.message;          
         } else {
-          Toast("获取信息失败");
+          this.$toast("获取信息失败");
         }
       });
     }

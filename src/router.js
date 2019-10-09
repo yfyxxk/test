@@ -7,6 +7,7 @@ import Search from "./views/tabbar/Search.vue";
 import newsList from "./views/news/newslist.vue";
 import newsInfo from "./views/news/newsinfo.vue";
 import photoList from "./views/photos/photolist.vue";
+import photoInfo from "./views/photos/photoinfo.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -40,6 +41,10 @@ export default new Router({
     {
       path: "/home/photolist",
       component: photoList
+    },
+    {
+      path: "/home/photoinfo/:id",
+      component: photoInfo
     }
   ]
 });

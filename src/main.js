@@ -7,6 +7,8 @@ import "./lib/mui/css/icons-extra.css";
 import Mint from "mint-ui";
 import VueResource from "vue-resource";
 import * as filters from "./assets/filters";
+import VuePreview from "vue-preview";
+Vue.use(VuePreview);
 Vue.use(Mint);
 Vue.use(VueResource);
 Vue.config.productionTip = false;
