@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <swipe :img="images"></swipe>
+    <swipe :img="images" :isFull="full"></swipe>
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/home/newslist">
@@ -47,7 +47,8 @@ import swipe from "../../components/swipe";
 export default {
   data() {
     return {
-      images: []
+      images: [],
+      full: true
     };
   },
   created() {
