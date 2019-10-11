@@ -1,5 +1,8 @@
 <template>
   <div class="msg-container">
+    <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+      <div id="ball" v-show="full" ref="ball"></div>
+    </transition>
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -8,23 +11,23 @@
       </div>
     </div>
     <div class="mui-card">
-      <div class="mui-card-header">{{goodsInfo.title}}</div>
+      <div class="mui-card-header">{{ goodsInfo.title }}</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
           <div>
             <p>
               <span>市场价：</span>
-              <del>￥{{goodsInfo.market_price}}</del>&nbsp;&nbsp;
+              <del>￥{{ goodsInfo.market_price }}</del>&nbsp;&nbsp;
               <span>销售价：</span>
-              <span class="new">￥{{goodsInfo.sell_price}}</span>
+              <span class="new">￥{{ goodsInfo.sell_price }}</span>
             </p>
           </div>
           <p>
             购买数量：
-            <numberbox></numberbox>
+            <numberbox @getCount = "getGoodsCount" :max="goodsInfo.stock_quantity"></numberbox>
           </p>
           <mt-button type="primary" size="small">立即购买</mt-button>
-          <mt-button type="danger" size="small">加入购物车</mt-button>
+          <mt-button type="danger" size="small" @click="addToShopCar">加入购物车</mt-button>
         </div>
       </div>
     </div>
@@ -32,13 +35,13 @@
       <div class="mui-card-header">商品参数</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <p>商品货号：{{goodsInfo.goods_no}}</p>
-          <p>库存情况：{{goodsInfo.stock_quantity}}件</p>
-          <p>上架时间：{{goodsInfo.add_time | timeFormat}}</p>
+          <p>商品货号：{{ goodsInfo.goods_no }}</p>
+          <p>库存情况：{{ goodsInfo.stock_quantity }}件</p>
+          <p>上架时间：{{ goodsInfo.add_time | timeFormat }}</p>
         </div>
       </div>
       <div class="mui-card-footer">
-        <mt-button type="primary" size="large" plain>图文介绍</mt-button>
+        <mt-button type="primary" size="large" plain @click="getDesc(goodsInfo.id)">图文介绍</mt-button>
         <mt-button type="danger" size="large" plain @click="getComments(goodsInfo.id)">商品评论</mt-button>
       </div>
     </div>
@@ -53,7 +56,8 @@ export default {
       id: this.$route.params.id,
       goodsInfo: [],
       goodsImages: [],
-      full: false
+      full: false,
+      goodsCount:1
     };
   },
   components: {
@@ -81,11 +85,40 @@ export default {
             item.img = item.src;
           });
           this.goodsImages = result.body.message;
-        } else this.$toast("获取图片失败");
+        } else {
+          this.$toast("获取图片失败");
+        }
       });
     },
     getComments(id) {
       this.$router.push({ name: "goodsComment", params: { id } });
+    },
+    getDesc(id) {
+      this.$router.push({ name: "goodsDesc", params: { id } });
+    },
+    beforeEnter(el) {
+      el.style.transform = "translate(0,0)";
+    },
+    enter(el,done) {
+      el.offsetWidth;
+      const ballPosition = this.$refs.ball.getBoundingClientRect();
+      const badgePosition = document
+        .getElementById("badge")
+        .getBoundingClientRect();
+      const xDist = badgePosition.left - ballPosition.left;
+      const yDist = badgePosition.top - ballPosition.top;
+      el.style.transform = `translate(${xDist}px,${yDist}px)`;
+      el.style.transition = "all 0.5s cubic-bezier(.52,-0.21,.83,.67)";
+      done();
+    },
+    afterEnter() {
+      this.full = !this.full;
+    },
+    addToShopCar(){
+      this.full = !this.full;
+    },
+    getGoodsCount(num){
+      this.goodsCount = num;      
     }
   }
 };
@@ -93,6 +126,7 @@ export default {
 <style lang="scss" scoped>
 .msg-container {
   background-color: #eee;
+  position: relative;
   .mui-card-content-inner {
     .new {
       color: red;
@@ -109,6 +143,16 @@ export default {
     button {
       margin: 15px 0;
     }
+  }
+  #ball {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    z-index: 99;
+    position: absolute;
+    top: 342px;
+    left: 152px;
   }
 }
 </style>
