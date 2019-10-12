@@ -49,7 +49,7 @@
 </template>
 <script>
 import swipe from "../../components/swipe";
-import numberbox from "../../components/numberbox";
+import numberbox from "../../components/numbox";
 export default {
   data() {
     return {
@@ -116,6 +116,13 @@ export default {
     },
     addToShopCar(){
       this.full = !this.full;
+      var info = {
+        id :this.id,
+        price : this.goodsInfo.sell_price,
+        selected : true,
+        count : this.goodsCount
+      }
+      this.$store.commit('updataShopCar',info)
     },
     getGoodsCount(num){
       this.goodsCount = num;      

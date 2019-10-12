@@ -8,13 +8,15 @@
 <script>
 import mui from "../lib/mui/js/mui.min.js";
 export default {
-  props:['max'],
+  props: ["max"],
   mounted() {
     mui(".mui-numbox").numbox();
   },
-  watch:{
-    max : function (newVal){
-      mui('.mui-numbox').numbox().setOption('max',newVal)
+  watch: {
+    max: function(newVal) {
+      mui(".mui-numbox")
+        .numbox()
+        .setOption("max", newVal);
     }
   },
   methods: {
