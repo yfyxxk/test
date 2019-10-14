@@ -34,10 +34,10 @@ export default {
     getGoodsList() {
       this.$http.get("api/getgoods?pageindex=" + this.num).then(result => {
         if (result.body.status === 0) {
+          this.goodslist.push(...result.body.message);
           if (result.body.message.length === 0) {
             return this.$toast("没有了");
-          }
-          this.goodslist.push(...result.body.message);
+          }          
         } else {
           this.$toast("获取信息失败");
         }
@@ -60,7 +60,7 @@ export default {
   justify-content: space-between;
   padding: 5px;
   .goods-item {
-    min-height: 275px;
+    min-height: 50%;   
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,9 +73,9 @@ export default {
       width: 100%;
     }
     .goods-title {
-      font-size: 14px;
+      font-size: 14px;          
     }
-    .goods-subtitle {
+    .goods-subtitle {      
       background-color: #eee;
       p {
         margin: 0;

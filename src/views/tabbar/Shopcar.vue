@@ -3,14 +3,17 @@
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner goods-message" v-for="(item,i) in goodsList" :key="i">
-          <mt-switch :v-model="true"></mt-switch>
+          <mt-switch
+            v-model="$store.getters.getSelected[item.id]"
+            @change="selectedChange(item.id,$store.getters.getSelected[item.id])"
+          ></mt-switch>
           <img :src="item.thumb_path" alt="商品图片" />
           <div>
             <h1>{{ item.title }}</h1>
             <p>
               <span>￥{{ item.sell_price }}</span>
-              <numbox></numbox>
-              <a href="#">删除</a>
+              <numbox :goodsId="item.id"></numbox>
+              <a href="#" @click.prevent="delItem(item.id,i)">删除</a>
             </p>
           </div>
         </div>
@@ -23,8 +26,8 @@
             <p>总计（不含运费）</p>
             <p>
               已勾选商品
-              <span>3</span>件，总价：
-              <span>￥1233</span>
+              <span>{{ $store.getters.getTotal.count }}</span>件，总价：
+              <span>￥{{ $store.getters.getTotal.price }}</span>
             </p>
           </div>
           <mt-button type="danger" size="small">去结算</mt-button>
@@ -58,6 +61,13 @@ export default {
             this.goodsList = result.body.message;
           } else this.$toast("获取信息失败");
         });
+    },
+    delItem(id, index) {
+      this.goodsList.splice(index, 1);
+      this.$store.commit("delItem", id);
+    },
+    selectedChange(id, val) {      
+      this.$store.commit('updateSelected',{id:id,selected:val})
     }
   }
 };
@@ -66,12 +76,15 @@ export default {
 #shopcar-container {
   background-color: #eee;
   overflow: hidden;
+  .mui-card-content-inner{
+    padding:4%;
+  }
   .goods-message {
     display: flex;
-    align-items: center;
+    align-items: center;    
     img {
-      width: 60px;
-      height: 60px;
+      width: 18%;      
+      margin: 0 4px;
     }
     h1 {
       font-size: 13px;
@@ -84,6 +97,8 @@ export default {
       }
       span {
         color: red;
+        width: 47px;
+        display:inline-block;
       }
     }
   }

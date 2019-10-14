@@ -24,7 +24,7 @@
           </div>
           <p>
             购买数量：
-            <numberbox @getCount = "getGoodsCount" :max="goodsInfo.stock_quantity"></numberbox>
+            <numberbox @getCount="getGoodsCount" :max="goodsInfo.stock_quantity"></numberbox>
           </p>
           <mt-button type="primary" size="small">立即购买</mt-button>
           <mt-button type="danger" size="small" @click="addToShopCar">加入购物车</mt-button>
@@ -57,7 +57,7 @@ export default {
       goodsInfo: [],
       goodsImages: [],
       full: false,
-      goodsCount:1
+      goodsCount: 1
     };
   },
   components: {
@@ -66,7 +66,7 @@ export default {
   },
   created() {
     this.getGoodsInfo();
-    this.getGoodsImages();
+    this.getGoodsImages();   
   },
   methods: {
     getGoodsInfo() {
@@ -99,7 +99,7 @@ export default {
     beforeEnter(el) {
       el.style.transform = "translate(0,0)";
     },
-    enter(el,done) {
+    enter(el, done) {
       el.offsetWidth;
       const ballPosition = this.$refs.ball.getBoundingClientRect();
       const badgePosition = document
@@ -114,18 +114,18 @@ export default {
     afterEnter() {
       this.full = !this.full;
     },
-    addToShopCar(){
+    addToShopCar() {
       this.full = !this.full;
       var info = {
-        id :this.id,
-        price : this.goodsInfo.sell_price,
-        selected : true,
-        count : this.goodsCount
-      }
-      this.$store.commit('updataShopCar',info)
+        id: this.id,
+        price: this.goodsInfo.sell_price,
+        selected: true,
+        count: this.goodsCount
+      };      
+      this.$store.commit("updateShopCar", info);
     },
-    getGoodsCount(num){
-      this.goodsCount = num;      
+    getGoodsCount(num) {
+      this.goodsCount = num;
     }
   }
 };

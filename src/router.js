@@ -69,5 +69,6 @@ export default new Router({
       component: goodsDesc,
       name: "goodsDesc"
     }
-  ]
+  ],
+  linkActiveClass: "mui-active"
 });

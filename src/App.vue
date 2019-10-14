@@ -2,9 +2,9 @@
   <div id="app-container">
     <!-- 标题头部 -->
     <mt-header fixed title="欢迎来访">
-      <router-link to="/" slot="left">
+      <div slot="left" @click="goBack" v-show="$route.path == '/home'? false:true">
         <mt-button icon="back">返回</mt-button>
-      </router-link>
+      </div>
     </mt-header>
     <!-- 中间部分 -->
     <transition>
@@ -12,7 +12,7 @@
     </transition>
     <!-- 底边栏 -->
     <nav class="mui-bar mui-bar-tab">
-      <router-link class="mui-tab-item-bar mui-active" to="/home">
+      <router-link class="mui-tab-item-bar " to="/home">
         <span class="mui-icon mui-icon-home"></span>
         <span class="mui-tab-label">首页</span>
       </router-link>
@@ -34,7 +34,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    goBack(){
+      this.$router.go(-1);
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
