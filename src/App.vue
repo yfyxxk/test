@@ -12,21 +12,21 @@
     </transition>
     <!-- 底边栏 -->
     <nav class="mui-bar mui-bar-tab">
-      <router-link class="mui-tab-item-bar " to="/home">
+      <router-link class="mui-tab-item-xg" to="/home">
         <span class="mui-icon mui-icon-home"></span>
         <span class="mui-tab-label">首页</span>
       </router-link>
-      <router-link class="mui-tab-item-bar" to="/member">
+      <router-link class="mui-tab-item-xg" to="/member">
         <span class="mui-icon mui-icon-contact"></span>
         <span class="mui-tab-label">会员</span>
       </router-link>
-      <router-link class="mui-tab-item-bar" to="/shopcar">
+      <router-link class="mui-tab-item-xg" to="/shopcar">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
           <span class="mui-badge" id="badge">{{ $store.getters.getGoodsNum }}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
-      <router-link class="mui-tab-item-bar" to="/search">
+      <router-link class="mui-tab-item-xg" to="/search">
         <span class="mui-icon mui-icon-search"></span>
         <span class="mui-tab-label">搜索</span>
       </router-link>
@@ -61,7 +61,10 @@ export default {
   position: absolute;
   transition: all 0.5s ease;
 }
-.mui-bar-tab .mui-tab-item-bar {
+.mui-bar-tab .mui-tab-item-xg.mui-active {
+    color: #007aff;
+}
+.mui-bar-tab .mui-tab-item-xg {
     display: table-cell;
     overflow: hidden;
     width: 1%;
@@ -72,17 +75,14 @@ export default {
     text-overflow: ellipsis;
     color: #929292;
 }
-.mui-bar-tab .mui-tab-item-bar .mui-active {
-    color: #007aff;
-}
-.mui-bar-tab .mui-tab-item-bar .mui-icon {
+.mui-bar-tab .mui-tab-item-xg .mui-icon {
     top: 3px;
     width: 24px;
     height: 24px;
     padding-top: 0;
     padding-bottom: 0;
 }
-.mui-bar-tab .mui-tab-item-bar .mui-icon~ .mui-tab-label {
+.mui-bar-tab .mui-tab-item-xg .mui-icon~ .mui-tab-label {
     font-size: 11px;
     display: block;
     overflow: hidden;

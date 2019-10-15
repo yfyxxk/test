@@ -7,7 +7,7 @@
       >
         <div class="mui-scroll">
           <a
-            :class="['mui-control-item',num == i?'mui-active': '']"
+            :class="['mui-control-item',num == i?'mui-active': '']"            
             href="#item1mobile"
             v-for="(item,i) in photoList"
             :key="i"
