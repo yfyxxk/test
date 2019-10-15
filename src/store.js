@@ -49,10 +49,8 @@ export default new Vuex.Store({
   },
   getters: {
     getGoodsNum(state) {
-      var count = state.shopCar.length;
-      // state.shopCar.forEach(item => {
-      //   count += parseInt(item.count);
-      // });
+      var count = 0;
+      count = state.shopCar.length;
       return count;
     },
     getGoodsId(state) {

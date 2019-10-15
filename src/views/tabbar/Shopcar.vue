@@ -1,5 +1,5 @@
 <template>
-  <div id="shopcar-container">
+  <div id="shopcar-container" v-if="$store.getters.getGoodsNum">
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner goods-message" v-for="(item,i) in goodsList" :key="i">
@@ -34,21 +34,37 @@
         </div>
       </div>
     </div>
+    <h1 id ="title">~~猜你喜欢~~</h1>
+    <goodscard :goodslist="goodsSample"></goodscard>
+    <mt-button type="primary" size="large" @click="toList">查看更多</mt-button>
+  </div>
+  <div v-else class="sub-container">
+    <div class="empty">
+      <img src="../../../public/img/shopcar.png" alt="图片" />
+      <h1>购物车是空的,赶紧行动吧！</h1>
+    </div>
+    <h1 id="title">~~猜你喜欢~~</h1>
+    <goodscard :goodslist="goodsSample"></goodscard>
+    <mt-button type="primary" size="large" @click="toList">查看更多</mt-button>  
   </div>
 </template>
 <script>
 import numbox from "../../components/shopnumbox";
+import goodscard from "../../components/goodscard";
 export default {
   data() {
     return {
-      goodsList: []
+      goodsList: [],
+      goodsSample: []
     };
   },
   components: {
-    numbox
+    numbox,
+    goodscard
   },
   created() {
     this.getGoodsList();
+    this.getSample();
   },
   methods: {
     getGoodsList() {
@@ -66,8 +82,21 @@ export default {
       this.goodsList.splice(index, 1);
       this.$store.commit("delItem", id);
     },
-    selectedChange(id, val) {      
-      this.$store.commit('updateSelected',{id:id,selected:val})
+    selectedChange(id, val) {
+      this.$store.commit("updateSelected", { id: id, selected: val });
+    },
+    getSample() {
+      this.$http.get("api/getgoods?pageindex=1").then(result => {
+        if (result.body.status === 0) {
+          var list = result.body.message;
+          var num = Math.round(Math.random()*(list.length-4))
+          var info = list.slice(num,num+4);         
+          this.goodsSample = info;           
+        }
+      });
+    },
+    toList(){
+      this.$router.push('/home/goodslist');
     }
   }
 };
@@ -76,14 +105,14 @@ export default {
 #shopcar-container {
   background-color: #eee;
   overflow: hidden;
-  .mui-card-content-inner{
-    padding:4%;
+  .mui-card-content-inner {
+    padding: 4%;
   }
   .goods-message {
     display: flex;
-    align-items: center;    
+    align-items: center;
     img {
-      width: 18%;      
+      width: 18%;
       margin: 0 4px;
     }
     h1 {
@@ -98,7 +127,7 @@ export default {
       span {
         color: red;
         width: 47px;
-        display:inline-block;
+        display: inline-block;
       }
     }
   }
@@ -113,4 +142,22 @@ export default {
     }
   }
 }
+.sub-container {
+  overflow: hidden;
+  .empty {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    h1 {
+      font-size: 15px;
+    }
+  }  
+}
+#title{
+    text-align: center;
+    font-size: 20px;
+    color:#FF4400;
+    margin-top: 15px;
+  }
 </style>
