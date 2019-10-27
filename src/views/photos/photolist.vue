@@ -1,5 +1,6 @@
 <template>
   <div class="photo-container">
+    <back-top></back-top>
     <div id="slider" class="mui-slider">
       <div
         id="sliderSegmentedControl"
@@ -7,7 +8,7 @@
       >
         <div class="mui-scroll">
           <a
-            :class="['mui-control-item',num == i?'mui-active': '']"            
+            :class="['mui-control-item',num == i?'mui-active': '']"
             href="#item1mobile"
             v-for="(item,i) in photoList"
             :key="i"
@@ -30,12 +31,13 @@
 <script>
 //导入mui的js文件
 import mui from "../../lib/mui/js/mui.min.js";
+import backTop from "../../components/scrolltop.vue";
 export default {
   data() {
     return {
       photoList: [],
       list: [],
-      num:0
+      num: 0
     };
   },
   //初始化滚动条
@@ -47,6 +49,9 @@ export default {
   created() {
     this.getPhotoTitle();
     this.getPhotoList(0, 0);
+  },
+  components: {
+    "back-top": backTop
   },
   methods: {
     getPhotoTitle() {
@@ -63,7 +68,7 @@ export default {
       this.$http.get("api/getimages/" + id).then(result => {
         if (result.body.status === 0) {
           this.num = index;
-          this.list = result.body.message;          
+          this.list = result.body.message;
         } else {
           this.$toast("获取信息失败");
         }
@@ -80,8 +85,8 @@ export default {
   .photo-list {
     list-style: none;
     padding: 10px 10px 0 10px;
-    margin: 0;    
-    li {      
+    margin: 0;
+    li {
       text-align: center;
       box-shadow: 0 0 8px #999;
       background-color: #ccc;
@@ -96,19 +101,19 @@ export default {
         height: 300px;
         margin: auto;
       }
-      .info{
+      .info {
         color: white;
-        background-color: rgba(0, 0, 0,0.4);
+        background-color: rgba(0, 0, 0, 0.4);
         max-height: 84px;
         position: absolute;
-        bottom: 0;      
+        bottom: 0;
         text-align: left;
         //overflow: hidden;
-        .info-title{
+        .info-title {
           font-size: 14px;
         }
-        .info-content{
-          text-overflow:ellipsis;                           
+        .info-content {
+          text-overflow: ellipsis;
           font-size: 13px;
         }
       }

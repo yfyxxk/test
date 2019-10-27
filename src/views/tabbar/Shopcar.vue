@@ -23,7 +23,7 @@
       <div class="mui-card">
         <div class="mui-card-content">
           <div class="mui-card-content-inner goods-stat">
-            <div>
+            <div>  
               <p>总计（不含运费）</p>
               <p>
                 已勾选商品
@@ -123,8 +123,9 @@ export default {
       margin: 0;
       .mui-numbox {
         height: 25px;
-        margin: 0 5px;
-      }
+        margin-right: 4px;        
+        width: 114px;        
+      }     
       span {
         color: red;
         width: 47px;
@@ -134,9 +135,9 @@ export default {
   }
   .goods-stat {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
     p {
-      margin: 0;
+      margin: 0;      
     }
     span {
       color: red;

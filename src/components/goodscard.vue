@@ -20,12 +20,12 @@
 </template>
 <script>
 export default {
-  props:["goodslist"],
+  props: ["goodslist"],
   methods: {
-     goInfo(id) {
+    goInfo(id) {
       this.$router.push({ name: "goodsinfo", params: { id } });
     }
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

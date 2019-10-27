@@ -2,8 +2,8 @@
   <div id="app-container">
     <!-- 标题头部 -->
     <mt-header fixed title="欢迎来访">
-      <div slot="left" @click="goBack" v-show="$route.path == '/home'? false:true">
-        <mt-button icon="back">返回</mt-button>
+      <div slot="left" v-show="$route.path == '/home'? false:true">
+        <mt-button icon="back" @click="goBack">返回</mt-button>
       </div>
     </mt-header>
     <!-- 中间部分 -->
@@ -36,17 +36,17 @@
 <script>
 export default {
   methods: {
-    goBack(){
+    goBack() {
       this.$router.go(-1);
     }
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 #app-container {
   padding-top: 40px;
-  padding-bottom: 50px;
+  padding-bottom: 50px;  
 }
 .v-enter {
   opacity: 0;
@@ -59,33 +59,41 @@ export default {
 .v-enter-active,
 .v-leave-active {
   position: absolute;
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
 }
 .mui-bar-tab .mui-tab-item-xg.mui-active {
-    color: #007aff;
+  color: #007aff;
 }
 .mui-bar-tab .mui-tab-item-xg {
-    display: table-cell;
-    overflow: hidden;
-    width: 1%;
-    height: 50px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #929292;
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #929292;
 }
 .mui-bar-tab .mui-tab-item-xg .mui-icon {
-    top: 3px;
-    width: 24px;
-    height: 24px;
-    padding-top: 0;
-    padding-bottom: 0;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .mui-bar-tab .mui-tab-item-xg .mui-icon~ .mui-tab-label {
-    font-size: 11px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 11px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mint-header {
+  z-index: 99;
+  font-size: 18px;
+  .mint-button {
+    line-height: 40px;
+    font-size: 13px;
+  }
 }
 </style>

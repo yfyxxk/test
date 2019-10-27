@@ -42,6 +42,12 @@ export default {
       this.getComments();
     },
     sendComment() {
+      if (this.msg.trim().length === 0) {
+        return Toast({
+          message: "内容不能为空",
+          duration: 1000
+        });
+      }
       this.$http
         .post("api/postcomment/" + this.id, { content: this.msg.trim() })
         .then(result => {
@@ -72,6 +78,7 @@ export default {
     min-height: 90px;
   }
   .cmt-item {
+    margin-top: 5px;
     .cmt-title {
       font-size: 14px;
       background-color: #ccc;

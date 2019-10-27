@@ -39,19 +39,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 #newslist-container {
-  .mui-table-view {
-    .mui-media-body {
-      h1 {
-        font-size: 14px;
-      }
+  .mui-media-body {
+    h1 {
       font-size: 14px;
-      .mui-ellipsis {
-        font-size: 12px;
-        color: blue;
-        display: flex;
-        justify-content: space-between;
-      }
     }
-  }
+    font-size: 14px;
+    .mui-ellipsis {
+      font-size: 12px;
+      color: blue;
+      display: flex;
+      justify-content: space-between;
+    }
+  }  
 }
 </style>

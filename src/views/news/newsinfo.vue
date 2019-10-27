@@ -41,7 +41,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .newsinfo-container{
-    padding: 0 4px;
+    padding: 0 4px;   
     .title{
         font-size: 16px;
         margin: 15px 0;

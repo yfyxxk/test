@@ -72,7 +72,7 @@ export default {
   }
   .content {
     font-size: 13px;
-    line-height: 26px;
+    line-height: 26px;        
   }
   /deep/ .my-gallery {
     margin: 5px;
