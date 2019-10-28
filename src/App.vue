@@ -1,5 +1,5 @@
 <template>
-  <div id="app-container">
+  <div id="app-container" @scroll="scrollEvent($event)">
     <!-- 标题头部 -->
     <mt-header fixed title="欢迎来访">
       <div slot="left" v-show="$route.path == '/home'? false:true">
@@ -31,22 +31,60 @@
         <span class="mui-tab-label">搜索</span>
       </router-link>
     </nav>
+    <div class="up" v-show="flag" @click="backTop">
+      <span class="mui-icon mui-icon-pulldown"></span>
+    </div>
   </div>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      flag: false,
+      dis: 0
+    };
+  },
   methods: {
+    backTop() {
+      this.$el.scrollTop = 0;
+    },
     goBack() {
       this.$router.go(-1);
+    },
+    scrollEvent(e) {
+      var dis = e.srcElement.scrollTop;      
+      if (dis > 150) {
+        this.flag = true;
+      } else {
+        this.flag = false;
+      }
     }
   }
 };
 </script>
-
 <style lang="scss" scoped>
 #app-container {
   padding-top: 40px;
-  padding-bottom: 50px;  
+  padding-bottom: 50px;
+  position: relative;   
+  .up {
+    z-index: 99;
+    position: fixed;
+    top: 83%;
+    right: 4%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(202, 196, 196, 0.5);
+    text-align: center;
+    span {
+      line-height: 50px;
+      opacity: 0.6;
+      font-size: 30px;
+      font-weight: bold;
+      transform: rotate(180deg);
+    }
+  }
 }
 .v-enter {
   opacity: 0;
@@ -82,7 +120,7 @@ export default {
   padding-top: 0;
   padding-bottom: 0;
 }
-.mui-bar-tab .mui-tab-item-xg .mui-icon~ .mui-tab-label {
+.mui-bar-tab .mui-tab-item-xg .mui-icon ~ .mui-tab-label {
   font-size: 11px;
   display: block;
   overflow: hidden;

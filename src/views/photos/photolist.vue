@@ -1,6 +1,5 @@
 <template>
-  <div class="photo-container">
-    <back-top></back-top>
+  <div class="photo-container">    
     <div id="slider" class="mui-slider">
       <div
         id="sliderSegmentedControl"
@@ -31,7 +30,6 @@
 <script>
 //导入mui的js文件
 import mui from "../../lib/mui/js/mui.min.js";
-import backTop from "../../components/scrolltop.vue";
 export default {
   data() {
     return {
@@ -49,10 +47,7 @@ export default {
   created() {
     this.getPhotoTitle();
     this.getPhotoList(0, 0);
-  },
-  components: {
-    "back-top": backTop
-  },
+  }, 
   methods: {
     getPhotoTitle() {
       this.$http.get("api/getimgcategory").then(result => {
@@ -60,7 +55,7 @@ export default {
           this.photoList = result.body.message;
           this.photoList.unshift({ title: "全部", id: 0 });
         } else {
-          Toast("获取信息失败");
+          this.$toast("获取信息失败");
         }
       });
     },

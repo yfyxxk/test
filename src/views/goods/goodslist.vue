@@ -1,6 +1,5 @@
 <template>
-  <div class="goods-container">
-    <back-top></back-top>    
+  <div class="goods-container">      
     <ul
       v-infinite-scroll="flag2&&loadMore"
       infinite-scroll-disabled="loading"
@@ -31,7 +30,6 @@
 </template>
 <script>
 import goodsitem from "../../components/goodscard";
-import backTop from "../../components/scrolltop.vue";
 export default {
   data() {
     return {
@@ -40,11 +38,7 @@ export default {
       flag: false,
       flag2: true
     };
-  },
-  components: {
-    goodsitem,
-    "back-top": backTop
-  },
+  }, 
   created() {
     this.getGoodsList();
   },

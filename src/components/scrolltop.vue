@@ -10,15 +10,15 @@ export default {
       flag:false,
       dis:0
     }
-  },  
+  },
   mounted() {    
-    document.body.addEventListener("scroll", this.gundong);
+     window.addEventListener("scroll", this.gundong,true);
     // this.$nextTick(function(){
     //   window.addEventListener('scroll',this.gundong)
     // })
   },
   destroyed() {
-    document.body.removeEventListener("scroll", this.gundong);
+     window.removeEventListener("scroll", this.gundong);
   },
   methods: {
     backTop(){           
@@ -27,6 +27,7 @@ export default {
     gundong() {      
       var dis = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
       this.dis = dis;
+      //console.log(this.$parent)
       console.log(document.body.scrollTop)              
       if(dis > 120){
         this.flag = true

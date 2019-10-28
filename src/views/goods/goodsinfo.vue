@@ -143,7 +143,7 @@ export default {
 <style lang="scss" scoped>
 .msg-container {
   background-color: #eee;
-  overflow: hidden;
+  overflow: hidden;  
   .mui-card-content-inner {
     .new {
       color: red;
@@ -168,8 +168,8 @@ export default {
     border-radius: 50%;
     z-index: 99;
     position: absolute;
-    top: 408px;
-    left: 152px;
+    top: 391px;
+    left: 151px;
   }
 }
 </style>
