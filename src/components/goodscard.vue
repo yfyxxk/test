@@ -47,30 +47,30 @@ export default {
     img {
       width: 100%;
     }
-    .goods-title {
-      font-size: 14px;
+  }
+}
+.goods-title {
+  font-size: 14px;
+}
+.goods-subtitle {
+  background-color: #eee;
+  p {
+    margin: 0;
+  }
+  .price {
+    .new {
+      color: red;
+      font-size: 16px;
+      font-weight: bold;
     }
-    .goods-subtitle {
-      background-color: #eee;
-      p {
-        margin: 0;
-      }
-      .price {
-        .new {
-          color: red;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        .old {
-          font-size: 13px;
-          margin-left: 10px;
-        }
-      }
-      .sell {
-        display: flex;
-        justify-content: space-between;
-      }
+    .old {
+      font-size: 13px;
+      margin-left: 10px;
     }
+  }
+  .sell {
+    display: flex;
+    justify-content: space-between;
   }
 }
 </style>

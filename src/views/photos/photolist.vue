@@ -1,5 +1,5 @@
 <template>
-  <div class="photo-container">    
+  <div class="photo-container">
     <div id="slider" class="mui-slider">
       <div
         id="sliderSegmentedControl"
@@ -47,7 +47,7 @@ export default {
   created() {
     this.getPhotoTitle();
     this.getPhotoList(0, 0);
-  }, 
+  },
   methods: {
     getPhotoTitle() {
       this.$http.get("api/getimgcategory").then(result => {
@@ -76,42 +76,40 @@ export default {
 * {
   touch-action: pan-y;
 }
-.photo-container {
-  .photo-list {
-    list-style: none;
-    padding: 10px 10px 0 10px;
-    margin: 0;
-    li {
-      text-align: center;
-      box-shadow: 0 0 8px #999;
-      background-color: #ccc;
-      margin-bottom: 10px;
-      position: relative;
-      img {
-        width: 100%;
-        vertical-align: middle;
-      }
-      img[lazy="loading"] {
-        width: 40px;
-        height: 300px;
-        margin: auto;
-      }
-      .info {
-        color: white;
-        background-color: rgba(0, 0, 0, 0.4);
-        max-height: 84px;
-        position: absolute;
-        bottom: 0;
-        text-align: left;
-        //overflow: hidden;
-        .info-title {
-          font-size: 14px;
-        }
-        .info-content {
-          text-overflow: ellipsis;
-          font-size: 13px;
-        }
-      }
+
+.photo-list {
+  list-style: none;
+  padding: 10px 10px 0 10px;
+  margin: 0;
+  li {
+    text-align: center;
+    box-shadow: 0 0 8px #999;
+    background-color: #ccc;
+    margin-bottom: 10px;
+    position: relative;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+    img[lazy="loading"] {
+      width: 40px;
+      height: 300px;
+      margin: auto;
+    }
+    .info {
+      color: white;
+      background-color: rgba(0, 0, 0, 0.4);
+      max-height: 84px;
+      position: absolute;
+      bottom: 0;
+      text-align: left;
+    }
+    .info-title {
+      font-size: 14px;
+    }
+    .info-content {
+      text-overflow: ellipsis;
+      font-size: 13px;
     }
   }
 }

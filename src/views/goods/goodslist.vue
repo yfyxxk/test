@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-container">      
+  <div class="goods-container">
     <ul
       v-infinite-scroll="flag2&&loadMore"
       infinite-scroll-disabled="loading"
@@ -29,7 +29,6 @@
   </div>
 </template>
 <script>
-import goodsitem from "../../components/goodscard";
 export default {
   data() {
     return {
@@ -38,7 +37,7 @@ export default {
       flag: false,
       flag2: true
     };
-  }, 
+  },
   created() {
     this.getGoodsList();
   },
@@ -55,20 +54,20 @@ export default {
         }
       });
     },
-    loadMore() {      
+    loadMore() {
       this.loading = true;
       this.flag = true;
       var time = setTimeout(() => {
         this.num++;
         this.getGoodsList();
         this.loading = false;
-        this.flag = false;        
-      }, 2500);
+        this.flag = false;
+      }, 2000);
       if (this.flag2 == false) {
         this.flag = false;
         clearTimeout(time);
       }
-    },    
+    },
     goInfo(id) {
       this.$router.push({ name: "goodsinfo", params: { id } });
     }
@@ -87,50 +86,50 @@ export default {
   p {
     margin: 0;
   }
-  .goods-item {
-    list-style: none;
-    min-height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 49%;
-    padding: 2px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px #ccc;
-    margin: 4px 0;    
-    h1{
-      margin-top:0; 
-    }
-    img {
-      width: 100%;
-    }
-    .goods-title {
-      font-size: 14px;
-    }
-    .goods-subtitle {
-      background-color: #eee;
-    }
-    .price {
-      .new {
-        color: red;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      .old {
-        font-size: 13px;
-        margin-left: 10px;
-      }
-    }
-    .sell {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
   .loading {
     text-align: center;
     /deep/ div {
       display: inline-block;
     }
   }
+}
+.goods-item {
+  list-style: none;
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 49%;
+  padding: 2px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px #ccc;
+  margin: 4px 0;
+  h1 {
+    margin-top: 0;
+  }
+  img {
+    width: 100%;
+  }
+}
+.goods-title {
+  font-size: 14px;
+}
+.goods-subtitle {
+  background-color: #eee;
+}
+.price {
+  .new {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .old {
+    font-size: 13px;
+    margin-left: 10px;
+  }
+}
+.sell {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

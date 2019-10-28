@@ -143,18 +143,7 @@ export default {
 <style lang="scss" scoped>
 .msg-container {
   background-color: #eee;
-  overflow: hidden;  
-  .mui-card-content-inner {
-    .new {
-      color: red;
-      font-weight: bold;
-      font-size: 15px;
-    }
-    .mint-button--small {
-      width: 100px;
-      margin-right: 5px;
-    }
-  }
+  overflow: hidden;
   .mui-card-footer {
     display: block;
     button {
@@ -170,6 +159,17 @@ export default {
     position: absolute;
     top: 391px;
     left: 151px;
+  }
+}
+.mui-card-content-inner {
+  .new {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .mint-button--small {
+    width: 100px;
+    margin-right: 5px;
   }
 }
 </style>

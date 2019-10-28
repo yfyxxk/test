@@ -23,7 +23,7 @@
       <div class="mui-card">
         <div class="mui-card-content">
           <div class="mui-card-content-inner goods-stat">
-            <div>  
+            <div>
               <p>总计（不含运费）</p>
               <p>
                 已勾选商品
@@ -40,7 +40,7 @@
       <div class="empty">
         <img src="../../../public/img/shopcar.png" alt="图片" />
         <h1>购物车是空的,赶紧行动吧！</h1>
-      </div>      
+      </div>
     </div>
     <div>
       <h1 id="title">~~猜你喜欢~~</h1>
@@ -105,42 +105,42 @@ export default {
 <style lang="scss" scoped>
 #shopcar-container {
   background-color: #eee;
-  overflow: hidden;  
+  overflow: hidden;
   .mui-card-content-inner {
     padding: 4%;
   }
-  .goods-message {
-    display: flex;
-    align-items: center;
-    img {
-      width: 18%;
-      margin: 0 4px;
-    }
-    h1 {
-      font-size: 13px;
-    }
-    p {
-      margin: 0;
-      .mui-numbox {
-        height: 25px;
-        margin-right: 4px;        
-        width: 114px;        
-      }     
-      span {
-        color: red;
-        width: 47px;
-        display: inline-block;
-      }
-    }
-  }
   .goods-stat {
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
     p {
-      margin: 0;      
+      margin: 0;
     }
     span {
       color: red;
+    }
+  }
+}
+.goods-message {
+  display: flex;
+  align-items: center;
+  img {
+    width: 18%;
+    margin: 0 4px;
+  }
+  h1 {
+    font-size: 13px;
+  }
+  p {
+    margin: 0;
+    .mui-numbox {
+      height: 25px;
+      margin-right: 4px;
+      width: 114px;
+    }
+    span {
+      color: red;
+      width: 47px;
+      display: inline-block;
     }
   }
 }
