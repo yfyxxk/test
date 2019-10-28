@@ -18,8 +18,12 @@ Vue.http.options.emulateJSON = true;
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
-new Vue({
+var vm = new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount("#app");
+
+router.afterEach((to, from) => {
+  vm.$el.scrollTop = 0;
+});

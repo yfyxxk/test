@@ -1,4 +1,5 @@
-html,body,#app-container{ width: 100%; height: 100%; overflow: scroll;} 
+html,body,#app-container{ width: 100%; height: 100%; overflow: scroll;}
+body{background-color: white}
 /* ::-webkit-scrollbar{width:0;height:0}   */
 html::-webkit-scrollbar, body::-webkit-scrollbar,#app-container::-webkit-scrollbar{width:0px;height:0px;}
 * {

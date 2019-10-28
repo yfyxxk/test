@@ -19,10 +19,7 @@ export default {
     text-align: center;
     img {
       height: 100%;
-    }
-    .full {
-      width: 100%;
-    }
+    }    
   }
 }
 </style>

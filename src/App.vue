@@ -43,10 +43,10 @@ export default {
       flag: false,
       dis: 0
     };
-  },
+  },  
   methods: {
     backTop() {
-      this.$el.scrollTop = 0;
+      this.$el.scrollTop = 0;      
     },
     goBack() {
       this.$router.go(-1);

@@ -11,7 +11,7 @@
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <swipe :img="goodsImages" :isFull="full"></swipe>
+          <swipe :img="goodsImages"></swipe>
         </div>
       </div>
     </div>
