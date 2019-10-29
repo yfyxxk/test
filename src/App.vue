@@ -1,5 +1,5 @@
 <template>
-  <div id="app-container" @scroll="scrollEvent($event)">
+  <div id="app-container" @scroll="scrollEvent($event)">  
     <!-- 标题头部 -->
     <mt-header fixed title="欢迎来访">
       <div slot="left" v-show="$route.path == '/home'? false:true">
@@ -43,8 +43,8 @@ export default {
       flag: false,
       dis: 0
     };
-  },  
-  methods: {
+  }, 
+  methods: {    
     backTop() {
       this.$el.scrollTop = 0;      
     },
@@ -52,7 +52,7 @@ export default {
       this.$router.go(-1);
     },
     scrollEvent(e) {
-      var dis = e.srcElement.scrollTop;      
+      var dis = e.srcElement.scrollTop;                  
       if (dis > 150) {
         this.flag = true;
       } else {
