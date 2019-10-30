@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       images: [],
-      full: true
+      full: true,
     };
   },
   created() {
