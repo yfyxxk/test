@@ -57,21 +57,9 @@ export default {
   data() {
     return {
       images: [],
-      full: true,
+      full: true
     };
-  },
-  created() {
-    this.getImages();
-  },
-  methods: {
-    getImages() {
-      this.$http.get("api/getlunbo").then(result => {
-        if (result.body.status === 0) {
-          this.images = result.body.message;
-        }
-      });
-    }
-  } 
+  }  
 };
 </script>
 <style lang="scss" scoped>
