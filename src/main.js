@@ -9,6 +9,8 @@ import VueResource from "vue-resource";
 import * as filters from "./assets/filters";
 import "./assets/css/main.css";
 import VuePreview from "vue-preview";
+import mui from "./lib/mui/js/mui.min.js";
+Vue.prototype.mui = mui;
 Vue.use(VuePreview);
 Vue.use(Mint);
 Vue.use(VueResource);

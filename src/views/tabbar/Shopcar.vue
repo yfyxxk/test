@@ -38,7 +38,7 @@
     </div>
     <div v-else class="sub-container">
       <div class="empty">
-        <img src="../../../public/img/shopcar.png" alt="图片" />
+        <img src="../../assets/img/shopcar.png" alt="图片" />
         <h1>购物车是空的,赶紧行动吧！</h1>
       </div>
     </div>

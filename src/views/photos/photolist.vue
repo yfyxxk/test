@@ -28,8 +28,6 @@
   </div>
 </template>
 <script>
-//导入mui的js文件
-import mui from "../../lib/mui/js/mui.min.js";
 export default {
   data() {
     return {
@@ -40,8 +38,8 @@ export default {
   },
   //初始化滚动条
   mounted() {
-    mui(".mui-scroll-wrapper").scroll({
-      deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    this.mui(".mui-scroll-wrapper").scroll({
+      deceleration: 0.0006//flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
     });
   },
   created() {
@@ -73,10 +71,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-* {
-  touch-action: pan-y;
-}
-
 .photo-list {
   list-style: none;
   padding: 10px 10px 0 10px;

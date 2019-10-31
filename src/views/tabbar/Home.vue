@@ -2,13 +2,13 @@
   <div class="home">
     <mt-swipe :auto="4000">
       <mt-swipe-item>
-        <img src="../../../public/img/1.jpg" alt="图片"/>
+        <img src="../../assets/img/1.jpg" alt="图片"/>
       </mt-swipe-item>
       <mt-swipe-item>
-        <img src="../../../public/img/2.jpg" alt="图片"/>
+        <img src="../../assets/img/2.jpg" alt="图片"/>
       </mt-swipe-item>
       <mt-swipe-item>
-        <img src="../../../public/img/3.jpg" alt="图片"/>
+        <img src="../../assets/img/3.jpg" alt="图片"/>
       </mt-swipe-item>
     </mt-swipe>
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -75,7 +75,7 @@ export default {
     display: inline-block;
     width: 60px;
     height: 60px;
-    background: url("../../../public/img/home.png") no-repeat;
+    background: url("../../assets/img/home.png") no-repeat;
   }
   .photo {
     background-position: 0 -60px;

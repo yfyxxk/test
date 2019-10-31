@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="mui-card">
-      <div class="mui-card-header">商品参数</div>
+      <div class="mui-card-header"><span class="hide">商品参数</span></div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
           <p>商品货号：{{ goodsInfo.goods_no }}</p>
@@ -125,7 +125,7 @@ export default {
       this.clickFlag = true;
     },
     addToShopCar() {
-      this.full = !this.full;
+      this.full = true;
       var info = {
         id: this.id,
         price: this.goodsInfo.sell_price,
@@ -159,7 +159,13 @@ export default {
     position: absolute;
     top: 391px;
     left: 151px;
-  }
+  }  
+}
+@media screen and(min-width: 375px)and(max-width: 385px){
+  .mui-card-header{width: 355px;}
+}
+@media screen and(min-width: 401px)and(max-width: 414px){
+  .mui-card-header{width: 394px;}
 }
 .mui-card-content-inner {
   .new {

@@ -6,15 +6,14 @@
   </div>
 </template>
 <script>
-import mui from "../lib/mui/js/mui.min.js";
 export default {
   props: ["max"],
-  mounted() {
-    mui(".mui-numbox").numbox();
+  mounted() {    
+    this.mui(".mui-numbox").numbox();
   },
   watch: {
     max: function(newVal) {
-      mui(".mui-numbox")
+      this.mui(".mui-numbox")
         .numbox()
         .setOption("max", newVal);
     }
@@ -24,7 +23,7 @@ export default {
       this.$emit(
         "getCount",
         parseInt(
-          mui(".mui-numbox")
+          this.mui(".mui-numbox")
             .numbox()
             .getValue()
         )

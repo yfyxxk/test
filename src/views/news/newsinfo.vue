@@ -12,7 +12,6 @@
 </template>
 <script>
 import comment from "../../components/comment";
-import {Toast} from "mint-ui"
 export default {
   data() {
     return {
@@ -29,7 +28,7 @@ export default {
         if (result.body.status === 0) {
           this.info = result.body.message[0];
         } else {
-          Toast("获取信息失败");
+          this.$toast("获取信息失败");
         }
       });
     }

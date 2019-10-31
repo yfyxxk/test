@@ -14,11 +14,10 @@
   </div>
 </template>
 <script>
-import mui from "../lib/mui/js/mui.min.js";
 export default {
   props: ["goodsId"],
   mounted() {
-    mui(".mui-numbox").numbox();  
+    this.mui(".mui-numbox").numbox();  
   },
   methods: {
     changeNum(id) {

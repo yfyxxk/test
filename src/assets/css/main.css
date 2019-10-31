@@ -1,14 +1,14 @@
-html,body,#app-container{ width: 100%; height: 100%; overflow: scroll;}
+html,body,#app-container{ width: 100%; height: 100%; overflow: scroll;-webkit-overflow-scrolling: touch;}
 /* html,body{ width: 100%; height: 100%; overflow: scroll;} */
 body{background-color: white}
 /* ::-webkit-scrollbar{width:0;height:0}   */
 html::-webkit-scrollbar, body::-webkit-scrollbar,#app-container::-webkit-scrollbar{width:0px;height:0px;}
-* {
-    -webkit-overflow-scrolling: touch;
-}
-html {
+html,body,#app-container{
     /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
     -ms-overflow-style:none;
     /*火狐下隐藏滚动条*/
     scrollbar-width: none;
+}
+html{
+    touch-action: none;
 }
