@@ -43,7 +43,7 @@ export default {
       flag: false,
       dis: 0
     };
-  }, 
+  },  
   methods: {    
     backTop() {
       this.$el.scrollTop = 0;      
@@ -51,7 +51,7 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
-    scrollEvent(e) {
+    scrollEvent(e) {      
       var dis = e.srcElement.scrollTop;                
       if (dis > 150) {
         this.flag = true;
@@ -84,10 +84,7 @@ export default {
       font-weight: bold;
       transform: rotate(180deg);
     }
-  }
-  .mint-button:after{
-    background-color: transparent;
-  }
+  } 
 }
 .v-enter {
   opacity: 0;
@@ -109,5 +106,8 @@ export default {
     line-height: 40px;
     font-size: 13px;
   }
+}
+button:enabled:active{
+  background-color: transparent;
 }
 </style>

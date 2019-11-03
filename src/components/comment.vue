@@ -2,8 +2,8 @@
   <div class="cmt-container">
     <h1>发表评论</h1>
     <hr />
-    <textarea maxlength="120" placeholder="评论最多120字" v-model="msg"></textarea>
-    <mt-button type="primary" size="large" @click="sendComment">发表评论</mt-button>
+    <textarea maxlength="120" placeholder="评论最多120字" v-model="msg"></textarea>    
+    <my-button class="primary" msg="发表评论" @send="sendComment"></my-button>
     <div class="cmt-item" v-for="(item,i) in comments" :key="i">
       <div
         class="cmt-title"
@@ -15,6 +15,7 @@
 </template>
 <script>
 import { Toast } from "mint-ui";
+import myButton from "./button"
 export default {
   data() {
     return {
@@ -23,6 +24,9 @@ export default {
       comments: [],
       msg: ""
     };
+  },
+  components:{
+    "my-button":myButton
   },
   created() {
     this.getComments();
@@ -88,6 +92,12 @@ export default {
       min-height: 40px;
       font-size: 14px;
     }
+  }
+  .primary{
+    width: 100%;
+    height: 41px;
+    font-size: 18px;
+    margin: 0;
   }
 }
 </style>

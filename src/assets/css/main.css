@@ -1,4 +1,4 @@
-html,body,#app-container{ width: 100%; height: 100%; overflow: scroll;-webkit-overflow-scrolling: touch;}
+html,body,#app-container{ width: 100%; height: 100%; overflow: scroll;}
 /* html,body{ width: 100%; height: 100%; overflow: scroll;} */
 body{background-color: white}
 /* ::-webkit-scrollbar{width:0;height:0}   */
@@ -9,6 +9,7 @@ html,body,#app-container{
     /*火狐下隐藏滚动条*/
     scrollbar-width: none;
 }
+*{-webkit-overflow-scrolling: touch;}
 html{
-    touch-action: none;
+    touch-action: pan-y;
 }

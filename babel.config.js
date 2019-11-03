@@ -9,5 +9,5 @@ module.exports = {
       }
     ]
   ],
-  ignore: ["./src/lib/mui/js/*.js"]
+  ignore: ["./src/assets/js/*.js"]
 };

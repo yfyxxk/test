@@ -29,10 +29,11 @@
           </div>
           <p>
             购买数量：
-            <numberbox @getCount="getGoodsCount" :max="goodsInfo.stock_quantity"></numberbox>
-          </p>
-          <mt-button type="primary" size="small">立即购买</mt-button>
-          <mt-button type="danger" size="small" @click="clickFlag && addToShopCar()">加入购物车</mt-button>
+            <numberbox @getCount="getGoodsCount" :max="goodsInfo.stock_quantity"></numberbox>            
+          </p>          
+          <button class="btn" @touchstart.prevent="start" @touchend="end">立即购买</button>
+          <button class="btn danger" @touchstart.prevent="start($event)||clickFlag && addToShopCar()" @touchend="end">加入购物车</button>          
+          <!-- <mt-button type="danger" size="small" @click="clickFlag && addToShopCar()">加入购物车</mt-button> -->
         </div>
       </div>
     </div>
@@ -68,13 +69,19 @@ export default {
   },
   components: {
     swipe,
-    numberbox
+    numberbox    
   },
   created() {
     this.getGoodsInfo();
     this.getGoodsImages();
   },
   methods: {
+    start(e){      
+      e.srcElement.classList.add("active");      
+    },
+    end(e){
+      e.target.classList.remove("active");
+    },
     getGoodsInfo() {
       this.$http.get("api/goods/getinfo/" + this.id).then(result => {
         if (result.body.status === 0) {
@@ -124,7 +131,7 @@ export default {
     afterLeave() {
       this.clickFlag = true;
     },
-    addToShopCar() {
+    addToShopCar() {      
       this.full = true;
       var info = {
         id: this.id,
@@ -142,6 +149,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .msg-container {
+  touch-action: auto;
   background-color: #eee;
   overflow: hidden;
   .mui-card-footer {
@@ -159,7 +167,10 @@ export default {
     position: absolute;
     top: 391px;
     left: 151px;
-  }  
+  }
+  .danger{
+    background-color: #ef4f4f;
+  }
 }
 @media screen and(min-width: 375px)and(max-width: 385px){
   .mui-card-header{width: 355px;}
@@ -175,7 +186,27 @@ export default {
   }
   .mint-button--small {
     width: 100px;
-    margin-right: 5px;
+    margin-right: 5px;    
   }
+}
+.btn {
+  margin: 10px 0 10px 10px;
+  background-color: #26a2ff;
+  border: 0;
+  padding: 0 12px;
+  width: 100px;
+  height: 33px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: white;
+  outline: none;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  margin-right:5px;
+  display: inline-block;
+}
+.active {
+  background-color: #808080 !important;
 }
 </style>
