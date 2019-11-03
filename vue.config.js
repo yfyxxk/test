@@ -6,8 +6,8 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     // 环境配置
-    // host: "localhost",
-    host: "192.168.1.2",
+    host: "localhost",
+    // host: "192.168.1.2",
     open: true //配置自动启动浏览器
   }
 };
