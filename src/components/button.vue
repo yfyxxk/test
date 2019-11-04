@@ -1,5 +1,5 @@
 <template>    
-    <button class="btn" @touchstart.prevent="start($event)||send()" @touchend="end">{{msg}}</button>    
+    <button class="btn" @touchstart.prevent="start($event)||send()" @click="send" @touchend="end">{{msg}}</button>    
 </template>
 <script>
 export default {

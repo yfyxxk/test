@@ -32,7 +32,7 @@
             <numberbox @getCount="getGoodsCount" :max="goodsInfo.stock_quantity"></numberbox>            
           </p>          
           <button class="btn" @touchstart.prevent="start" @touchend="end">立即购买</button>
-          <button class="btn danger" @touchstart.prevent="start($event)||clickFlag && addToShopCar()" @touchend="end">加入购物车</button>          
+          <button class="btn danger" @touchstart.prevent="start($event)||clickFlag && addToShopCar()" @click="clickFlag && addToShopCar()" @touchend="end">加入购物车</button>          
           <!-- <mt-button type="danger" size="small" @click="clickFlag && addToShopCar()">加入购物车</mt-button> -->
         </div>
       </div>
@@ -76,7 +76,8 @@ export default {
     this.getGoodsImages();
   },
   methods: {
-    start(e){      
+    start(e){
+      console.log("haha") 
       e.srcElement.classList.add("active");      
     },
     end(e){
