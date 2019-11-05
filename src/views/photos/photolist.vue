@@ -29,11 +29,13 @@
 </template>
 <script>
 export default {
+  name:"photolist",
   data() {
     return {
       photoList: [],
       list: [],
-      num: 0
+      num: 0,
+      dis:0
     };
   },
   //初始化滚动条
@@ -44,7 +46,18 @@ export default {
   },
   created() {
     this.getPhotoTitle();
-    this.getPhotoList(0, 0);
+    this.getPhotoList(0, 0);    
+  },
+   beforeRouteLeave(to, from, next) {       
+    if(to.meta.keepAlive){      
+      this.dis = this.$el.parentElement.scrollTop;       
+     }else(this.dis = 0)      
+    next();    
+  },
+  beforeRouteEnter(to, from, next) {    
+    next((vm) => {                    
+        vm.$el.parentElement.scrollTop = vm.dis;      
+    });
   },
   methods: {
     getPhotoTitle() {

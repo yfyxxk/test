@@ -8,7 +8,9 @@
     </mt-header>
     <!-- 中间部分 -->
     <transition>
-      <router-view></router-view>
+      <keep-alive include="photolist,goodlist">
+        <router-view></router-view>
+      </keep-alive>
     </transition>
     <!-- 底边栏 -->
     <nav class="mui-bar mui-bar-tab">

@@ -2,18 +2,12 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/tabbar/Home.vue";
 import Member from "./views/tabbar/Member.vue";
-import Shopcar from "./views/tabbar/Shopcar.vue";
 import Search from "./views/tabbar/Search.vue";
 import newsList from "./views/news/newslist.vue";
-import newsInfo from "./views/news/newsinfo.vue";
-import photoList from "./views/photos/photolist.vue";
 import photoInfo from "./views/photos/photoinfo.vue";
-import goodsList from "./views/goods/goodslist.vue";
 import goodsInfo from "./views/goods/goodsinfo.vue";
 import goodsComment from "./components/comment.vue";
-import goodsDesc from "./views/goods/goodsdesc.vue";
 Vue.use(Router);
-
 export default new Router({
   routes: [
     { path: "/", redirect: "/home" },
@@ -28,7 +22,8 @@ export default new Router({
     },
     {
       path: "/shopcar",
-      component: Shopcar
+      name: "shopcar",
+      component: () => import("./views/tabbar/Shopcar.vue")
     },
     {
       path: "/search",
@@ -40,24 +35,29 @@ export default new Router({
     },
     {
       path: "/home/newsinfo/:id",
-      component: newsInfo
+      name: "newsInfo",
+      component: () => import("./views/news/newsinfo.vue")
     },
     {
       path: "/home/photolist",
-      component: photoList
+      name: "photoList",
+      component: () => import("./views/photos/photolist.vue")
     },
     {
       path: "/home/photoinfo/:id",
-      component: photoInfo
+      component: photoInfo,
+      meta: { keepAlive: true }
     },
     {
       path: "/home/goodslist",
-      component: goodsList
+      name: "goodList",
+      component: () => import("./views/goods/goodslist.vue")
     },
     {
       path: "/home/goodsinfo/:id",
       component: goodsInfo,
-      name: "goodsinfo"
+      name: "goodsinfo",
+      meta: { keepAlive: true }
     },
     {
       path: "/home/goodscomment/:id",
@@ -66,7 +66,7 @@ export default new Router({
     },
     {
       path: "/home/goodsdesc/:id",
-      component: goodsDesc,
+      component: () => import("./views/goods/goodsdesc.vue"),
       name: "goodsDesc"
     }
   ],

@@ -30,16 +30,29 @@
 </template>
 <script>
 export default {
+  name:"goodlist",
   data() {
     return {
       num: 1,
       goodslist: [],
       flag: false,
-      flag2: true
+      flag2: true,
+      dis:0
     };
   },
   created() {
     this.getGoodsList();
+  },
+  beforeRouteLeave(to, from, next) {
+    if (to.meta.keepAlive) {
+      this.dis = this.$el.parentElement.scrollTop;
+    } else this.dis = 0;
+    next();
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.$el.parentElement.scrollTop = vm.dis;
+    });
   },
   methods: {
     getGoodsList() {
